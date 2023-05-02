@@ -10,18 +10,10 @@ const FormComponent = ({ setAllTasks }) => { // props из App.js
     form.resetFields(); // очистка инпута формы
   }
   return (
-    <StyledForm form={form} // связь с конкретной формой
+    <StyledForm
+      form={form} // связь с конкретной формой
       name="basic"
       // автостилизация формы из antd
-      labelCol={{
-        span: 8,
-      }}
-      wrapperCol={{
-        span: 16,
-      }}
-      style={{
-        maxWidth: 600,
-      }}
       onFinish={addTask} // вызов функции при отправке формы
       autoComplete="off" // запоминание задач
     >
@@ -34,15 +26,11 @@ const FormComponent = ({ setAllTasks }) => { // props из App.js
             message: 'Сначала введите текст задачи',
           },
         ]}
+        style={{ flex: 1 }}
       >
-      <StyledInput placeholder="Добавьте задачу"/>
+        <StyledInput placeholder="Добавьте задачу" />
       </Form.Item>
-      <Form.Item
-        wrapperCol={{
-          offset: 8,
-          span: 16,
-        }}
-      >
+      <Form.Item>
         {/*кнопка, которая вызывает onFinish*/}
         <StyledButton type="primary" htmlType="submit">
           Добавить
