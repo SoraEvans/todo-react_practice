@@ -67,7 +67,7 @@ const App = () => {
   return (
     <StyledContainer>
       <StyledTitle>
-        <span>Just do it!</span>
+        <span>Just Do It!</span>
         <span>список задач</span>
       </StyledTitle>
       {/*передаем setAllTasks внутрь компонента Form (props)*/}
@@ -115,7 +115,7 @@ const App = () => {
           onChange={(event) => editText(event.target.value, item)}
           onPressEnter={() => handleEdit(item)}
           />
-          : <StyledSpan color={item.done}
+          : <StyledSpan taskColor={item.done} // цвет выполненной задачи
           onDoubleClick={() => handleEdit(item)}
           >
         {item.text}

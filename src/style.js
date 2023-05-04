@@ -1,7 +1,7 @@
 import styled from "styled-components/macro";
 import { Button, List, Pagination, Tabs } from "antd";
 import Checkbox from "antd/es/checkbox/Checkbox";
-import { MAIN_GREEN } from "./constants";
+import { HOVER_GREEN, MAIN_GREEN, SECOND_GREEN } from "./constants";
 
 const { Item } = List;
 
@@ -26,13 +26,24 @@ export const StyledItem = styled(Item)`
       }
     }
   }
+
+  .ant-input:hover {
+    border-color: ${MAIN_GREEN};
+  }
+
+  .ant-input:focus {
+    border-color: ${MAIN_GREEN};
+    box-shadow: 0 0 0 2px ${SECOND_GREEN};
+  }
 `
+
 export const StyledContainer = styled.div`
   padding: 10px;
   max-width: 50rem;
   margin: 5rem auto;
   font-family: 'Golos Text Regular', sans-serif;
 `
+
 export const StyledTitle = styled.div`
   display: flex;
   flex-direction: column;
@@ -52,11 +63,22 @@ export const StyledTitle = styled.div`
     color: #66696e;
   }
 `
+
 export const StyledCheckbox = styled(Checkbox)`
   margin-right: 0.75rem;
 
-  .ant-checkbox-checked .ant-checkbox-inner {
-    background-color: ${MAIN_GREEN};
+  .ant-checkbox-checked {
+    &:after {
+      border: none;
+    }
+
+    .ant-checkbox-inner {
+      background-color: ${MAIN_GREEN};
+      border-color: ${MAIN_GREEN};
+    }
+  }
+
+  .ant-checkbox:hover .ant-checkbox-inner {
     border-color: ${MAIN_GREEN};
   }
 
@@ -70,7 +92,14 @@ export const StyledCheckbox = styled(Checkbox)`
       top: 45%;
     }
   }
+
+  :hover .ant-checkbox-checked {
+    .ant-checkbox-inner {
+      background-color: ${HOVER_GREEN} !important;
+    }
+  }
 `
+
 export const StyledSpan = styled.span`
   flex: 1;
   text-decoration: ${props => props.color && 'line-through'};
@@ -81,9 +110,19 @@ export const StyledSpan = styled.span`
     display: none;
   }
 `
+
 export const StyledButton = styled(Button)`
   background-color: ${MAIN_GREEN};
   color: white;
+
+  &:hover {
+    background-color: ${HOVER_GREEN} !important;
+  }
+
+  &:active {
+    background-color: ${HOVER_GREEN} !important;
+  }
+
 `
 
 export const StyledTabs = styled(Tabs)`
@@ -97,6 +136,7 @@ export const StyledTabs = styled(Tabs)`
 
   .ant-tabs-tab {
     border-color: #d9d9d9 !important;
+    font-size: 16px;
   }
 
   .ant-tabs-tab-active .ant-tabs-tab-btn {
@@ -106,6 +146,16 @@ export const StyledTabs = styled(Tabs)`
   .ant-tabs-tab:not(.ant-tabs-tab-active) {
     background-color: #d0d2d9 !important;
     color: #686a6c;
+  }
+
+  .ant-tabs-tab-btn {
+    &:active {
+      color: ${MAIN_GREEN} !important;
+    }
+
+    &:focus {
+      color: ${MAIN_GREEN} !important;
+    }
   }
 `
 
@@ -122,6 +172,18 @@ export const StyledPagination = styled(Pagination)`
     & > a {
       color: white;
     }
+
+    :hover {
+      border-color: ${MAIN_GREEN};
+
+      a {
+        color: white;
+      }
+    }
+  }
+
+  .ant-pagination-item-link-icon {
+    color: ${MAIN_GREEN} !important;
   }
 `
 

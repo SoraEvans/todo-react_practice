@@ -14,5 +14,4 @@ const FontStyles = createGlobalStyle`
   src: url(${GolosBold}) format('ttf');
 }
 `
-
 export default FontStyles;

@@ -1,13 +1,15 @@
 import { StyledButton, StyledForm, StyledInput } from './style';
-import React from 'react';
+import React, { useRef } from 'react';
 import { Form } from "antd";
 
 const FormComponent = ({ setAllTasks }) => { // props из App.js
   const [form] = Form.useForm(); // хук формы
+  const inputRef = useRef(null); // якорный хук - отслеживание инпута для автофокуса
   const addTask = (values) => {
     // записываем в allTasks новый массив, в который деструктуризируем изначальный массив и сохраняем новый объект(задачу)
     setAllTasks(prevState => [...prevState, { text: values.taskText, id: Date.now(), done: false, edit: false }]);
     form.resetFields(); // очистка инпута формы
+    inputRef.current.focus({ cursor: 'start' });
   }
   return (
     <StyledForm
@@ -28,7 +30,9 @@ const FormComponent = ({ setAllTasks }) => { // props из App.js
         ]}
         style={{ flex: 1 }}
       >
-        <StyledInput placeholder="Добавьте задачу" />
+        <StyledInput ref={inputRef}
+                     autoFocus
+                     placeholder="Добавьте задачу"/>
       </Form.Item>
       <Form.Item>
         {/*кнопка, которая вызывает onFinish*/}
