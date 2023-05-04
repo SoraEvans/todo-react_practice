@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/todo-react_practice/static/css/main.ae902b39.css",
+    "main.js": "/todo-react_practice/static/js/main.e3810bce.js",
+    "static/js/787.06469d7b.chunk.js": "/todo-react_practice/static/js/787.06469d7b.chunk.js",
+    "static/media/GolosText-Regular.ttf": "/todo-react_practice/static/media/GolosText-Regular.2815ae554bdfaa756469.ttf",
+    "static/media/GolosText-Bold.ttf": "/todo-react_practice/static/media/GolosText-Bold.49a1d71a0df012b7ea3d.ttf",
+    "static/media/emptyList.svg": "/todo-react_practice/static/media/emptyList.a45bd84a3a8fc5a46f0718769cce4f65.svg",
+    "index.html": "/todo-react_practice/index.html",
+    "main.ae902b39.css.map": "/todo-react_practice/static/css/main.ae902b39.css.map",
+    "main.e3810bce.js.map": "/todo-react_practice/static/js/main.e3810bce.js.map",
+    "787.06469d7b.chunk.js.map": "/todo-react_practice/static/js/787.06469d7b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ae902b39.css",
+    "static/js/main.e3810bce.js"
+  ]
+}
