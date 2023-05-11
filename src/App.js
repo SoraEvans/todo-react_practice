@@ -56,12 +56,12 @@ const App = () => {
     setPage(!filteredTasks.length
       ? Math.ceil(allTasks.length / ELEM_ON_PAGE)
       : Math.ceil(filteredTasks.length / ELEM_ON_PAGE))
-  }, [allTasks])
+  }, [allTasks.length, filteredTasks.length])
 
   useEffect(() => {
     if (+tab === 1) {
       setFilteredTasks([])
-    } else setFilteredTasks(allTasks.filter(item => +tab === 2 ? item.done : !item.done))
+    } else setFilteredTasks(allTasks.filter(item => +tab === 2 ? item.done : !item.done)) // заполнение filteredTasks в зависимости от открытой Tab
   }, [allTasks, tab])
 
   return (
@@ -71,7 +71,7 @@ const App = () => {
         <span>список задач</span>
       </StyledTitle>
       {/*передаем setAllTasks внутрь компонента Form (props)*/}
-      <Form setAllTasks={setAllTasks}/>
+      <Form setAllTasks={setAllTasks} />
       <StyledTabs
         type="card"
         activeKey={tab}
@@ -83,48 +83,48 @@ const App = () => {
           const end = start + ELEM_ON_PAGE;
 
           return {
-          label: tab, // имя таба
-          key: id,
-          children: // контент внутри каждого таба
-          <StyledList
-          locale={{
-          emptyText:
-          <StyledEmptyBlock>
-          <img src={emptyList} alt="Empty" width="48"/>
-          <div>Список дел пуст</div>
-          </StyledEmptyBlock>
-        }}
-          bordered
-          dataSource={tab === 'Все задачи' ? allTasks.slice(start, end) : filteredTasks.slice(start, end)}
-          renderItem={(item) => ( // мапим массив allTasks/filteredTasks и возвращаем новый, измененный
-          <StyledItem
-          actions={[
-          <a
-          key="list-loadmore-more"
-          onClick={() => removeTask(item.id)}
-          >
-          Удалить
-          </a>]}
-          >
-          <StyledCheckbox checked={item.done}
-          onChange={() => handleCheckbox(item)}
-          /> {/*меняем checkbox*/}
-        {item.edit
-          ? <Input value={item.text}
-          onBlur={() => handleEdit(item)}
-          onChange={(event) => editText(event.target.value, item)}
-          onPressEnter={() => handleEdit(item)}
-          />
-          : <StyledSpan taskColor={item.done} // цвет выполненной задачи
-          onDoubleClick={() => handleEdit(item)}
-          >
-        {item.text}
-          </StyledSpan>
-        }
-          </StyledItem>
-          )}
-          />,
-        };
+            label: tab, // имя таба
+            key: id,
+            children: // контент внутри каждого таба
+              <StyledList
+                locale={{
+                  emptyText:
+                    <StyledEmptyBlock>
+                      <img src={emptyList} alt="Empty" width="48" />
+                      <div>Список дел пуст</div>
+                    </StyledEmptyBlock>
+                }}
+                bordered
+                dataSource={tab === 'Все задачи' ? allTasks.slice(start, end) : filteredTasks.slice(start, end)}
+                renderItem={(item) => ( // мапим массив allTasks/filteredTasks и возвращаем новый, измененный
+                  <StyledItem
+                    actions={[
+                      <a
+                        key="list-loadmore-more"
+                        onClick={() => removeTask(item.id)}
+                      >
+                        Удалить
+                      </a>]}
+                  >
+                    <StyledCheckbox checked={item.done}
+                                    onChange={() => handleCheckbox(item)}
+                    /> {/*меняем checkbox*/}
+                    {item.edit
+                      ? <Input value={item.text}
+                               onBlur={() => handleEdit(item)}
+                               onChange={(event) => editText(event.target.value, item)}
+                               onPressEnter={() => handleEdit(item)}
+                      />
+                      : <StyledSpan taskColor={item.done} // цвет выполненной задачи
+                                    onDoubleClick={() => handleEdit(item)}
+                      >
+                        {item.text}
+                      </StyledSpan>
+                    }
+                  </StyledItem>
+                )}
+              />,
+          };
         })}
       />
       <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.5rem' }}>

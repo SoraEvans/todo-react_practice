@@ -102,8 +102,8 @@ export const StyledCheckbox = styled(Checkbox)`
 
 export const StyledSpan = styled.span`
   flex: 1;
-  text-decoration: ${props => props.color && 'line-through'};
-  color: ${props => props.color ? '#CDCDCD' : 'black'};
+  text-decoration: ${props => props.taskColor && 'line-through'};
+  color: ${props => props.taskColor ? '#CDCDCD' : 'black'};
   overflow: auto;
 
   &::-webkit-scrollbar {
